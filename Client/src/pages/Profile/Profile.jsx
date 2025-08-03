@@ -88,7 +88,7 @@ const Profile = () => {
               <div className="w-full h-fit">
                 <div className="relative w-full h-[200px]">
                   <img
-                    src="../public/cover.jpg"
+                    src={userData?.coverPic}
                     className="w-full h-[200px] rounded-tr-lg rounded-tl-lg"
                   />
                   <div className="absolute object-cover top-24 left-6 z-10">
