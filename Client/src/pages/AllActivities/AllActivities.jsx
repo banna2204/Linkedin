@@ -12,7 +12,7 @@ const AllActivities = () => {
   const [ownData, setOwnData] = useState(null)
 
   const fetchDataOnLoad = async() => {
-    await axios.get(`http://localhost:4000/api/post/getAllPostForUser/${id}`).then(res=>{
+    await axios.get(`https://linkedin-4wbd.onrender.com/api/post/getAllPostForUser/${id}`).then(res=>{
           setPosts(res.data.posts)
       }).catch(err => {
             console.log(err)

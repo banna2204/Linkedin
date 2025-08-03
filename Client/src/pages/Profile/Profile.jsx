@@ -26,11 +26,11 @@ const Profile = () => {
   const fetchDataOnLoad = async () => {
     try {
       const [userDatas, ownDatas, allposts] = await Promise.all([
-        axios.get(`http://localhost:4000/api/auth/user/${id}`),
-        axios.get("http://localhost:4000/api/auth/self", {
+        axios.get(`https://linkedin-4wbd.onrender.com/api/auth/user/${id}`),
+        axios.get("https://linkedin-4wbd.onrender.com/api/auth/self", {
           withCredentials: true,
         }),
-        axios.get(`http://localhost:4000/api/post/getAllPostForUser/${id}`),
+        axios.get(`https://linkedin-4wbd.onrender.com/api/post/getAllPostForUser/${id}`),
       ]);
       setPosts(allposts.data.posts);
       setUserData(userDatas.data.user);
@@ -49,7 +49,7 @@ const Profile = () => {
   const handleEditFunc = async (data) => {
     await axios
       .put(
-        `http://localhost:4000/api/auth/update`,
+        `https://linkedin-4wbd.onrender.com/api/auth/update`,
         { user: data },
         { withCredentials: true }
       )
@@ -65,7 +65,7 @@ const Profile = () => {
   const handleLogout = async () => {
     await axios
       .post(
-        `http://localhost:4000/api/auth/logout`,
+        `https://linkedin-4wbd.onrender.com/api/auth/logout`,
         {},
         { withCredentials: true }
       )

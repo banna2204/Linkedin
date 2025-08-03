@@ -22,7 +22,7 @@ useEffect(() => {
 
   const handleLogout = async() => {
       setShowLogin(true);
-     await axios.post(`http://localhost:4000/api/auth/logout`,{},{withCredentials:true}).then(res=>{
+     await axios.post(`https://linkedin-4wbd.onrender.com/api/auth/logout`,{},{withCredentials:true}).then(res=>{
           localStorage.clear();
           window.location.reload()
       }).catch(err => {

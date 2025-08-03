@@ -16,7 +16,7 @@ const Post = ({ profile,item,key,personalData }) => {
   const desc = item?.desc;
 
   const handleLike = async() =>{
-    await axios.post('http://localhost:4000/api/post/likeDislike',{postId:item?._id},{withCredentials:true}).then(res=>{
+    await axios.post('https://linkedin-4wbd.onrender.com/api/post/likeDislike',{postId:item?._id},{withCredentials:true}).then(res=>{
       if(liked){
         setNoOfLike((prev)=>prev-1);
         setLiked(false);

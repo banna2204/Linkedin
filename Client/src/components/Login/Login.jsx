@@ -6,7 +6,7 @@ import {ToastContainer,toast} from 'react-toastify'
 const Login = ({setShowLogin}) => {
 
 
-  const url = 'http://localhost:4000';
+  const url = 'https://linkedin-4wbd.onrender.com';
   const [currState,setCurrState] = useState("Login")
   const [data, setData] = useState({
     name:"",

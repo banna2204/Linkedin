@@ -20,8 +20,8 @@ const Feeds = () => {
   const fetchData = async () => {
     try {
       const [userData, postData] = await Promise.all([
-        await axios.get('http://localhost:4000/api/auth/self', { withCredentials: true }),
-        await axios.get('http://localhost:4000/api/post/getAllPost')
+        await axios.get('https://linkedin-4wbd.onrender.com/api/auth/self', { withCredentials: true }),
+        await axios.get('https://linkedin-4wbd.onrender.com/api/post/getAllPost')
       ]);
       setPersonalData(userData.data.user)
       localStorage.setItem('userInfo',JSON.stringify(userData.data.user))
