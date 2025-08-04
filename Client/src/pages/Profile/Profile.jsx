@@ -47,25 +47,20 @@ const Profile = () => {
   };
 
   const handleEditFunc = async (data) => {
-  try {
-    const res = await axios.put(
-      `https://linkedin-4wbd.onrender.com/api/auth/update`,
-      { user: data },
-      { withCredentials: true }
-    );
-
-    toast.success("Profile updated!");
-
-    fetchDataOnLoad();
-
-    setInfoModal(false);
-
-  } catch (err) {
-    console.log(err);
-    toast.error("Something Went Wrong");
-  }
-};
-
+    await axios
+      .put(
+        `https://linkedin-4wbd.onrender.com/api/auth/update`,
+        { user: data },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Something Went Wrong");
+      });
+  };
 
   const handleLogout = async () => {
   try {
@@ -76,8 +71,8 @@ const Profile = () => {
     );
 
     localStorage.clear();
-    navigate("/");  
-    
+    navigate("/"); 
+
   } catch (err) {
     console.log(err);
     alert("Something Went Wrong");
