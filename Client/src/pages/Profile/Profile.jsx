@@ -47,37 +47,42 @@ const Profile = () => {
   };
 
   const handleEditFunc = async (data) => {
-    await axios
-      .put(
-        `https://linkedin-4wbd.onrender.com/api/auth/update`,
-        { user: data },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        alert("Something Went Wrong");
-      });
-  };
+  try {
+    const res = await axios.put(
+      `https://linkedin-4wbd.onrender.com/api/auth/update`,
+      { user: data },
+      { withCredentials: true }
+    );
+
+    toast.success("Profile updated!");
+
+    fetchDataOnLoad();
+
+    setInfoModal(false);
+
+  } catch (err) {
+    console.log(err);
+    toast.error("Something Went Wrong");
+  }
+};
+
 
   const handleLogout = async () => {
-    await axios
-      .post(
-        `https://linkedin-4wbd.onrender.com/api/auth/logout`,
-        {},
-        { withCredentials: true }
-      )
-      .then((res) => {
-        localStorage.clear();
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-        alert("Something Went Wrong");
-      });
-  };
+  try {
+    await axios.post(
+      `https://linkedin-4wbd.onrender.com/api/auth/logout`,
+      {},
+      { withCredentials: true }
+    );
+
+    localStorage.clear();
+    navigate("/");  
+    
+  } catch (err) {
+    console.log(err);
+    alert("Something Went Wrong");
+  }
+};
 
   return (
     <div className="px-5 xl:px-50 py-5 mt-5 flex flex-col gap-5 w-full pt-12 bg-gray-100">

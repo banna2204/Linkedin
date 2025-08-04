@@ -6,18 +6,27 @@ const AddModal = (props) => {
 
     // const [imageUrl, setImageUrl] = useState(null)
     const [desc, setDesc] = useState("");
+    const [posts, setPosts] = useState([]);
 
     const handlePost = async () => {
-        if (desc.trim().length === 0 ) return toast.error("Please enter field");
+    if (desc.trim().length === 0) return toast.error("Please enter field");
 
-        await axios.post('https://linkedin-4wbd.onrender.com/api/post',{desc:desc},{withCredentials:true}).then((res=>{
-            window.location.reload();
-        })).catch(err => {
-            console.log(err)
+    try {
+        const res = await axios.post(
+            'https://linkedin-4wbd.onrender.com/api/post',
+            { desc },
+            { withCredentials: true }
+        );
 
-        })
+        setPosts(prev => [res.data, ...prev]);
+        setDesc(""); 
+        toast.success("Post created successfully!");
 
+    } catch (err) {
+        console.error(err);
+        toast.error("Something went wrong");
     }
+};
     return (
         <div className=''>
             <div className='flex gap-4 items-center'>
